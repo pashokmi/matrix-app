@@ -1,0 +1,113 @@
+
+
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: radial-gradient(circle, rgba(250, 250, 250, 1) 0%, rgba(13, 139, 137, 1) 100%);
+
+    min-height: 100vh;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container {
+    max-width: 1900px;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.form input {
+    width: 200px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border-radius: 5px;
+
+}
+
+.form button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: teal;
+}
+
+.form button:active {
+    background-color: #04caca;
+}
+
+.wrapper {
+    overflow-x: scroll;
+    padding: 0 10px;
+}
+
+table {
+    padding: 50px 0;
+    margin: 0 auto;
+}
+
+td {
+    padding: 5px;
+    min-width: 60px;
+    border-radius: 5px;
+    border: 1px solid teal;
+    text-align: center;
+}
+
+td:hover {
+    background-color: rgba(2, 167, 167, 0.68);
+}
+
+.teal {
+    background-color: teal;
+}
+
+.cell {
+    cursor: copy;
+}
+
+.add {
+    cursor: copy;
+}
+
+.average {
+    background-color: #02d3d3;
+}
+
+.sum {
+    cursor: pointer;
+    background-color: rgba(0, 128, 128, 0.27);
+}
+
+.sum:hover {
+    background-color: rgba(2, 167, 167, 0.68);
+}
+
+.delete button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
