@@ -1,4 +1,4 @@
-import {Cell} from "../context/MatrixProvider";
+import {Cell} from "../types";
 
 export const getGradientBackground = (percent: number) => {
     return `linear-gradient(to top, #ff2400 ${percent}%, transparent ${percent}%)`;
@@ -32,7 +32,7 @@ export function cloneDeep<T>(obj: T): T | undefined {
         return clonedObj as T;
     }
 
-    return undefined; // Fallback return statement
+    return undefined;
 }
 
 export function setNewCellValue(prevMatrix:Cell[][],rowIndex:number, colIndex:number) {

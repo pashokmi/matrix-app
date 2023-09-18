@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useMatrix} from '../../context/MatrixProvider';
 import {formatPercentage, getGradientBackground} from "../../utils";
 
-// Компонент для відображення матриці
 const MatrixTable = () => {
     const {
         matrix,
@@ -13,18 +12,18 @@ const MatrixTable = () => {
         addRow,
         increaseCellValue
     } = useMatrix();
-    const n = matrix.length > 0 ? matrix[0].length : 0; // Отримуємо кількість стовпців
-    const [hoveredRow, setHoveredRow] = useState<number | null>(null); // Зберігаємо номер рядка, на якому наведено мишку
-    const [highlightedCells, setHighlightedCells] = useState<{ row: number; col: number }[]>([]); // Зберігаємо список виділених комірок
 
-    // Функція для обчислення градієнтного фону комірки на основі відсотка
+    const n = matrix.length > 0 ? matrix[0].length : 0;
+    const [hoveredRow, setHoveredRow] = useState<number | null>(null);
+    const [highlightedCells, setHighlightedCells] = useState<{ row: number; col: number }[]>([]);
+
     const {x} = matrixFormValue
-    // Функція для виділення X комірок з найближчими значеннями до комірки на якій наведено мишку
+
     const highlightClosestCells = (rowIndex: number, colIndex: number, x: number) => {
         const hoveredValue = matrix[rowIndex][colIndex].amount;
         const flatMatrix = matrix.flat();
         const sortedCells = [...flatMatrix].sort((a, b) => Math.abs(a.amount - hoveredValue) - Math.abs(b.amount - hoveredValue));
-        const closestCells = sortedCells.slice(1, x + 1); // Вибираємо перші X найближчих комірок (першу пропускаємо, бо це комірка на якій наведено мишку)
+        const closestCells = sortedCells.slice(1, x + 1);
 
         const highlighted = closestCells.map((cell) => {
             const cellIndex = flatMatrix.findIndex((item) => item.id === cell.id);
@@ -55,7 +54,7 @@ const MatrixTable = () => {
                                 }}
                                 onClick={() => increaseCellValue(rowIndex, colIndex)}
                                 onMouseEnter={() => {
-                                    highlightClosestCells(rowIndex, colIndex, x); // Підсвічуємо 5 найближчих комірок
+                                    highlightClosestCells(rowIndex, colIndex, x);
                                 }}
                                 onMouseLeave={() => {
                                     setHighlightedCells([]);

@@ -1,8 +1,7 @@
-import InputForm, {InputData} from './components/InputForm';
+import InputForm from './components/InputForm';
 import MatrixTable from './components/MatrixTable';
-import {MatrixProvider, useMatrix} from './context/MatrixProvider';
+import {MatrixProvider} from './context/MatrixProvider';
 
-// Компонент App
 function App() {
 
 

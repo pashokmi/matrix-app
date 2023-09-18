@@ -17,18 +17,13 @@ const InputForm = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log({
-            m: mValue,
-            n: nValue,
-            x: xValue,
-        });
+
         setMatrixFormValues({
             m: mValue,
             n: nValue,
             x: xValue
         })
-        // If you need to update some other state with these values
-        // setMatrixFormValues({ m: mValue, n: nValue, x: xValue });
+
     };
 
 
@@ -39,7 +34,6 @@ const InputForm = () => {
                 <input
                     placeholder={'Enter M'}
                     value={mValue}
-
                     onChange={(e) => setMValue(Number(e.target.value) || 0)}
                     min={0}
                     max={100}
@@ -53,7 +47,6 @@ const InputForm = () => {
                     min={0}
                     value={nValue}
                     onChange={(e) => setNValue(Number(e.target.value) || 0)}
-
                     max={100}
                     type="number"
                 />

@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# Matrix App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Matrix is a web application that allows users to create, display, and interact with matrices. The app provides
+functionality for creating matrices, editing cell values, adding and deleting rows, and calculating row and column sums
+and averages.
 
-## Available Scripts
+## [View the Matrix App](https://matrix-app-chi.vercel.app/)
 
-In the project directory, you can run:
+## Table of Contents
 
-### `yarn start`
+- [Requirements](#requirements)
+- [Running the App](#running-the-app)
+- [Using the App](#using-the-app)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Requirements
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Before using the "Matrix" app, make sure you have the following:
 
-### `yarn test`
+1. **Web Browser**: It is recommended to use the latest version of Google Chrome, Mozilla Firefox, or Safari.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Node.js and npm (Node Package Manager)**: The "Matrix" app is built using React, and you need Node.js and npm for
+   running it locally.
 
-### `yarn build`
+## Running the App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run the "Matrix" app on your local computer, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Download the App Code**: Download the source code of the app from the GitHub repository. You can clone the
+   repository using Git or download a ZIP archive and extract it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```shell
+   git clone https://github.com/pashokmi/matrix-app.git
 
-### `yarn eject`
+2. **Navigate to the App Directory**: Open a terminal and navigate to the app's directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```shell
+   cd matrix-app
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Install Dependencies**: Execute the following command to install all the required dependencies from the
+   package.json file:
+   This command will launch a development server and automatically open the web browser with the "Matrix" app
+   at http://localhost:3000. If the web browser doesn't open automatically, you can manually navigate to this link in
+   your browser.
+   ```shell
+   npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. **Start the App**: After successfully installing the dependencies, start the app with the following command:
+    ```shell
+   npm start
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+5.   **Use the App**: Now you can use the "Matrix" app to create, edit, and interact with matrices. Try adding or deleting
+     rows, changing cell values, and viewing calculations of sums and averages.
 
-## Learn More
+## Using the App
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Create Matrices**: Specify the number of rows and columns in the input fields and click the "Create Matrix" button to create a new matrix.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Edit Cell Values**: Click on any cell within the matrix to edit its value by typing in a new number.
+
+- **Add Rows**: Press the "Add row" button to add a new row with random values to the matrix.
+
+- **Delete Rows**: Click the "Delete row" button next to a row to remove it from the matrix.
+
+- **View Sums and Averages**: Sums of rows and averages of columns are automatically calculated and displayed in the table.
+
+- **Change Highlighting Mode**: Hover over a row's sum or a cell to highlight the nearest cells to it.

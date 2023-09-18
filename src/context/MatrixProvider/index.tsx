@@ -1,25 +1,8 @@
-import React, {createContext, useContext, useState, useEffect, ReactNode, useId, useCallback} from 'react';
-import {cloneDeep, setNewCellValue} from "../../utils";
+import React, {createContext, useContext, useState, useEffect, ReactNode, useCallback} from 'react';
+import { setNewCellValue} from "../../utils";
+import {Cell, MatrixContextType} from "../../types";
 
-type CellId = number; // Унікальне значення для всієї таблиці
-type CellValue = number; // Випадкове трьоцифрове число
 
-export type Cell = {
-    id: CellId;
-    amount: CellValue;
-};
-
-type MatrixContextType = {
-    matrix: Cell[][];
-    createMatrix: (m: number, n: number) => void;
-    calculateRowSum: (row: Cell[]) => number;
-    calculateColumnAverage: (columnIndex: number) => number;
-    deleteRow: (rowIndex: number) => void;
-    addRow: any,
-    increaseCellValue: any,
-    setMatrixFormValues: ({n, m, x}: { n: number, m: number, x: number }) => void,
-    matrixFormValue: { n: number, m: number, x: number }
-};
 
 const MatrixContext = createContext<MatrixContextType | undefined>(undefined);
 
@@ -39,9 +22,7 @@ export const MatrixProvider: React.FC<{ children: ReactNode }> = ({children}) =>
         for (let i = 0; i < m; i++) {
             const row: Cell[] = [];
             for (let j = 0; j < n; j++) {
-                // Генеруємо випадкове трьоцифрове число для amount
                 const randomValue = Math.floor(Math.random() * 900) + 100;
-                // Генеруємо унікальний id для кожної клітинки
                 const cellId = i * m + j;
                 const cell: Cell = {
                     id: cellId,
@@ -57,17 +38,16 @@ export const MatrixProvider: React.FC<{ children: ReactNode }> = ({children}) =>
     useEffect(() => {
         createMatrix(matrixFormValue.m, matrixFormValue.n)
 
-    }, [matrixFormValue])    // Функція для обчислення суми в рядку
-    //useCallback
+    }, [matrixFormValue])
+
     const calculateRowSum = useCallback((row: Cell[]) => {
         return row.reduce((sum, cell) => sum + cell.amount, 0);
     }, []);
-    // Функція для обчислення середнього значення в стовпці
+
     const calculateColumnAverage = useCallback((columnIndex: number) => {
         const columnTotal = matrix.reduce((sum, row) => sum + row[columnIndex].amount, 0);
         return columnTotal / matrix.length;
     }, [matrix]);
-
 
     const deleteRow = (rowIndex: number) => {
         const newMatrix = [...matrix];
@@ -76,30 +56,19 @@ export const MatrixProvider: React.FC<{ children: ReactNode }> = ({children}) =>
     };
 
     const addRow = () => {
+        const newRow = matrixFormValue.n > 0
+            ? Array.from({length: matrixFormValue.n}, (_, index) => ({
+                id: matrix.flat().length + index,
+                amount: Math.floor(Math.random() * 900) + 100,
+            }))
+            : [];
 
-        const newRow: Cell[] = [];
-        for (let j = 0; j < matrixFormValue.n; j++) {
-            // Генеруємо випадкове трьоцифрове число для amount
-            const randomValue = Math.floor(Math.random() * 900) + 100;
-            // Генеруємо унікальний id для кожної клітинки
-            const lastId = matrix.flat().length - 1
-            const cellId = lastId + j;
-            const cell: Cell = {
-                id: cellId,
-                amount: randomValue,
-            };
-            newRow.push(cell);
-        }
-
-        console.log(newRow)
-        const newMatrix = [...matrix];
-        newMatrix.push(newRow);
-        setMatrix(newMatrix)
+        setMatrix((prevMatrix) => [...prevMatrix, newRow]);
     };
+
     const increaseCellValue = (rowIndex: number, colIndex: number) => {
         setMatrix((prevMatrix) => setNewCellValue(prevMatrix, rowIndex, colIndex));
     };
-
 
     return (
         <MatrixContext.Provider
