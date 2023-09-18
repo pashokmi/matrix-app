@@ -48,13 +48,13 @@ export const MatrixProvider: React.FC<{ children: ReactNode }> = ({children}) =>
         return columnTotal / matrix.length;
     }, [matrix]);
 
-    const deleteRow = (rowIndex: number) => {
+    const deleteRow = useCallback((rowIndex: number) => {
         const newMatrix = [...matrix];
         newMatrix.splice(rowIndex, 1);
         setMatrix(newMatrix);
-    };
+    }, [matrix]);
 
-    const addRow = () => {
+    const addRow = useCallback(() => {
         if (matrix.length >= 100) {
             alert('We cannot add more than 100 lines!')
             return;
@@ -68,8 +68,7 @@ export const MatrixProvider: React.FC<{ children: ReactNode }> = ({children}) =>
             : [];
 
         setMatrix((prevMatrix) => [...prevMatrix, newRow]);
-    };
-
+    }, [matrix, matrixFormValue]);
 
     const increaseCellValue = (rowIndex: number, colIndex: number) => {
         setMatrix((prevMatrix) => setNewCellValue(prevMatrix, rowIndex, colIndex));
