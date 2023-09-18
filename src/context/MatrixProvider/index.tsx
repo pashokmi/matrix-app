@@ -1,7 +1,6 @@
 import React, {createContext, useContext, useState, useEffect, ReactNode, useCallback} from 'react';
-import { setNewCellValue} from "../../utils";
+import {setNewCellValue} from "../../utils";
 import {Cell, MatrixContextType} from "../../types";
-
 
 
 const MatrixContext = createContext<MatrixContextType | undefined>(undefined);
@@ -56,6 +55,11 @@ export const MatrixProvider: React.FC<{ children: ReactNode }> = ({children}) =>
     };
 
     const addRow = () => {
+        if (matrix.length >= 100) {
+            alert('We cannot add more than 100 lines!')
+            return;
+        }
+
         const newRow = matrixFormValue.n > 0
             ? Array.from({length: matrixFormValue.n}, (_, index) => ({
                 id: matrix.flat().length + index,
@@ -65,6 +69,7 @@ export const MatrixProvider: React.FC<{ children: ReactNode }> = ({children}) =>
 
         setMatrix((prevMatrix) => [...prevMatrix, newRow]);
     };
+
 
     const increaseCellValue = (rowIndex: number, colIndex: number) => {
         setMatrix((prevMatrix) => setNewCellValue(prevMatrix, rowIndex, colIndex));
